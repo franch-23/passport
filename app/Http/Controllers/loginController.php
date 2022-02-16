@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use const http\Client\Curl\AUTH_ANY;
 
 class loginController extends Controller
 {
@@ -20,6 +22,7 @@ class loginController extends Controller
 
         if(Auth::attempt($credentials)){
             return Auth::user()->createToken('hola')->accessToken;
+
         }
 
         return 'algo falla ';
@@ -27,4 +30,5 @@ class loginController extends Controller
     public function datos(){
         return Auth::user();
     }
+
 }
